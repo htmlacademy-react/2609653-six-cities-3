@@ -1,4 +1,4 @@
-import PageLayout from './Layout/PageLayout';
+import PageLayout from './layout/PageLayout';
 
 function App({totalPlacesCount}: { totalPlacesCount : number}) {
   return (
