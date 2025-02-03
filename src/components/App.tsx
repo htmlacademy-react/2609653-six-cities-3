@@ -1,6 +1,7 @@
-import PageLayout from './layout/PageLayout';
+import PageLayout from './Layout/PageLayout';
+type AppProps = { totalPlacesCount : number }
 
-function App({totalPlacesCount}: { totalPlacesCount : number}) {
+function App({totalPlacesCount}: AppProps) {
   return (
     <PageLayout totalPlacesCount={totalPlacesCount} />
   );

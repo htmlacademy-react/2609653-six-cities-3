@@ -1,7 +1,9 @@
 import Header from './Header/Header';
 import Main from './Main/Main';
 
-function PageLayout({totalPlacesCount} : { totalPlacesCount: number }) {
+type PageLayoutProps = { totalPlacesCount: number }
+
+function PageLayout({totalPlacesCount} : PageLayoutProps) {
   return(
     <div className="page page--gray page--main">
       <Header />
