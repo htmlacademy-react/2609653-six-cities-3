@@ -1,10 +1,10 @@
-import PlaceCard from '../../PlaceCard/PlaceCard';
+import PlaceCard from '../components/PlaceCard/PlaceCard';
 
 type MainProps = {
   placesCount: number;
 }
 
-export default function Main(props: MainProps) {
+export default function MainPage(props: MainProps) {
   const {placesCount} = props;
   return(
     <main className="page__main page__main--index">
