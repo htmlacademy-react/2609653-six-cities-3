@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PageLayout from './Layout/PageLayout';
 import NotFound from '../pages/not-found';
 import MainPage from '../pages/main';
@@ -6,28 +6,26 @@ import OfferPage from '../pages/offer';
 import LoginPage from '../pages/login';
 import FavoritesPage from '../pages/favorites';
 import PrivateRoute from './Routes/PrivateRoute';
-import { AuthorizationStatus } from '../const';
+import { AppRoute, AuthorizationStatus } from '../const';
 
-type AppProps = { totalPlacesCount : number }
+type AppProps = { totalPlacesCount: number }
 
-function App({totalPlacesCount}: AppProps) {
+function App({ totalPlacesCount }: AppProps) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<PageLayout />}>
+        <Route path={AppRoute.Main} element={<PageLayout />}>
           <Route index element={<MainPage placesCount={totalPlacesCount} />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='favorites' element={
-            <PrivateRoute
-              authorizationStatus={AuthorizationStatus.NoAuth}
-            >
+          <Route path={AppRoute.Login} element={<LoginPage />} />
+          <Route path={AppRoute.Favorites} element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
               <FavoritesPage />
             </PrivateRoute>
           }
           />
-          <Route path='offer/:id' element={<OfferPage />} />
+          <Route path={AppRoute.Offer} element={<OfferPage />} />
         </Route>
-        <Route path="*" element={ <NotFound /> } />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
