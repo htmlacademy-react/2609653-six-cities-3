@@ -1,12 +1,14 @@
-import PlaceCard from '../components/PlaceCard/PlaceCard';
+import OfferList from '../components/OfferList/OfferList';
+import { Offer } from '../types/offer';
 
 type MainProps = {
   placesCount: number;
+  offers: Offer[];
 }
 
 export default function MainPage(props: MainProps) {
-  const {placesCount} = props;
-  return(
+  const { placesCount, offers } = props;
+  return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
@@ -64,13 +66,7 @@ export default function MainPage(props: MainProps) {
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-              <PlaceCard />
-            </div>
+            <OfferList offers={offers} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map"></section>
