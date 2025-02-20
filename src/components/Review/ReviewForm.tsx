@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react';
 export default function ReviewForm() {
   const [reviewText, setReviewText] = useState('');
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [ratingVal, setRatingVal] = useState<string | undefined>(undefined);
+  const [, setRatingVal] = useState<string | undefined>(undefined);
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setReviewText(e.target.value);
