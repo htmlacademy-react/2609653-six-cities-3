@@ -53,7 +53,7 @@ export const offers: Offer[] = [
   }
 ];
 
-export const favOffers: Offer[] = [
+export const favoriteOffers: Offer[] = [
   {
     id: 1709,
     title: 'Wood and stone place',

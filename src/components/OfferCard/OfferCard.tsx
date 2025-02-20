@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom';
 import { IMG_FOLDER, MAX_RATING_VALUE } from '../../const';
 import { Offer } from '../../types/offer';
-//import { useState } from 'react';
 
 export type OfferCardProps = Offer & {
-  setActiveId: (id:number | null) => void;
+  setActiveId: (id: number | null) => void;
 };
 
 export default function OfferCard(props: OfferCardProps) {
+  const { setActiveId } = props;
   return (
     <article className="cities__card place-card" onMouseOver={() => {
-      props.setActiveId(props.id);
-    }} onMouseOut={() => { props.setActiveId(null); }}>
+      setActiveId(props.id);
+    }} onMouseOut={() => {
+      setActiveId(null);
+    }}
+    >
       {props.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>

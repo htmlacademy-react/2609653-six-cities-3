@@ -8,3 +8,7 @@ export type Offer = {
     isPremium: boolean;
     imgSrc: string;
 };
+
+export type OfferList = {
+    offers: Offer[];
+};

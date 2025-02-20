@@ -6,8 +6,7 @@ import ReviewDisplay from '../components/Review/ReviewDisplay';
 
 function OfferPage() {
   const params = useParams();
-  if (!params.id?.length) {
-    // eslint-disable-next-line no-console
+  if (!params.id) {
     return <NotFoundPage />;
   }
 

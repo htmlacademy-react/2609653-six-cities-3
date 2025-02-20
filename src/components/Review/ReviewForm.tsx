@@ -1,8 +1,8 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 export default function ReviewForm() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [reviewText, setReviewText] = useState('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [ratingVal, setRatingVal] = useState<string | undefined>(undefined);
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -12,10 +12,6 @@ export default function ReviewForm() {
   const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
     setRatingVal(e.target.value);
   };
-
-  useEffect(()=>{
-    console.log(ratingVal, reviewText);
-  }, [ratingVal, reviewText]); //Запускать при изменении ratingVal
 
   return(
     <form className="reviews__form form" action="#" method="post">

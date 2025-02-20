@@ -8,7 +8,7 @@ import FavoritesPage from '../pages/favorites';
 import PrivateRoute from './Routes/PrivateRoute';
 import { AppRoute, AuthorizationStatus } from '../const';
 import { Offer } from '../types/offer';
-import { favOffers } from '../mocks/offers';
+import { favoriteOffers } from '../mocks/offers';
 
 type AppProps = { totalPlacesCount: number; offers: Offer[] }
 
@@ -21,7 +21,7 @@ function App({ totalPlacesCount, offers }: AppProps) {
           <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route path={AppRoute.Favorites} element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <FavoritesPage offers={favOffers} />
+              <FavoritesPage offers={favoriteOffers} />
             </PrivateRoute>
           }
           />

@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { IMG_FOLDER, MAX_RATING_VALUE } from '../../const';
 import { Offer } from '../../types/offer';
 
-type FavoriteOfferCardProps = Offer;
-export default function FavoriteOfferCard(props: FavoriteOfferCardProps) {
+export default function FavoriteOfferCard(props: Offer) {
   return(
     <article className="favorites__card place-card">
       {props.isPremium &&
