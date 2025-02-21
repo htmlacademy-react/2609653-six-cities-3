@@ -1,3 +1,6 @@
+export const MAX_RATING_VALUE = 5;
+export const IMG_FOLDER = 'img';
+
 export enum AppRoute {
     Login = '/login',
     Favorites = '/favorites',
