@@ -9,6 +9,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 import { AppRoute, AuthorizationStatus } from '../const';
 import { Offer } from '../types/offer';
 import { favoriteOffers } from '../mocks/offers';
+import { AMSTERDAM } from '../mocks/city';
 
 type AppProps = { totalPlacesCount: number; offers: Offer[] }
 
@@ -17,7 +18,7 @@ function App({ totalPlacesCount, offers }: AppProps) {
     <BrowserRouter>
       <Routes>
         <Route path={AppRoute.Main} element={<PageLayout />}>
-          <Route index element={<MainPage placesCount={totalPlacesCount} offers={offers} />} />
+          <Route index element={<MainPage city={AMSTERDAM} placesCount={totalPlacesCount} offers={offers} />} />
           <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route path={AppRoute.Favorites} element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>

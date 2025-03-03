@@ -1,3 +1,5 @@
+import { OfferPoint } from './city';
+
 export type Offer = {
     id: number;
     title: string;
@@ -7,6 +9,7 @@ export type Offer = {
     rating: number;
     isPremium: boolean;
     imgSrc: string;
+    coords: OfferPoint | null;
 };
 
 export type OfferList = {
