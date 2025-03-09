@@ -10,6 +10,7 @@ export const offers: Offer[] = [
     rating: 4,
     isPremium: true,
     imgSrc: 'apartment-01.jpg',
+    coords: { lat: 52.3909553943508, lng: 4.85309666406198 }
   },
   {
     id: 1709,
@@ -20,6 +21,7 @@ export const offers: Offer[] = [
     rating: 4,
     isPremium: false,
     imgSrc: 'room.jpg',
+    coords: { lat: 52.3609553943508, lng: 4.85309666406198 }
   },
   {
     id: 2354,
@@ -30,6 +32,7 @@ export const offers: Offer[] = [
     rating: 4,
     isPremium: false,
     imgSrc: 'apartment-02.jpg',
+    coords: { lat: 52.3909553943508, lng: 4.929309666406198 }
   },
   {
     id: 8871,
@@ -40,6 +43,7 @@ export const offers: Offer[] = [
     rating: 5,
     isPremium: true,
     imgSrc: 'apartment-03.jpg',
+    coords: { lat: 52.3809553943508, lng: 4.939309666406198 }
   },
   {
     id: 5536,
@@ -50,6 +54,7 @@ export const offers: Offer[] = [
     rating: 4,
     isPremium: false,
     imgSrc: 'room.jpg',
+    coords: null
   }
 ];
 
@@ -63,6 +68,7 @@ export const favoriteOffers: Offer[] = [
     rating: 4,
     isPremium: false,
     imgSrc: 'room-small.jpg',
+    coords: { lat: 52.3609553943508, lng: 4.85309666406198 }
   },
   {
     id: 8871,
@@ -73,5 +79,6 @@ export const favoriteOffers: Offer[] = [
     rating: 5,
     isPremium: true,
     imgSrc: 'apartment-small-03.jpg',
+    coords: { lat: 52.3809553943508, lng: 4.939309666406198 }
   },
 ];

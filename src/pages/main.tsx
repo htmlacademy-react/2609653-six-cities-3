@@ -1,13 +1,16 @@
 import OfferList from '../components/OfferList/OfferList';
+import OfferMap from '../components/OfferMap/OfferMap';
+import { City } from '../types/city';
 import { Offer } from '../types/offer';
 
 type MainProps = {
+  city: City;
   placesCount: number;
   offers: Offer[];
 }
 
 export default function MainPage(props: MainProps) {
-  const { placesCount, offers } = props;
+  const { city, placesCount, offers } = props;
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
@@ -69,7 +72,9 @@ export default function MainPage(props: MainProps) {
             <OfferList offers={offers} />
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <section className="cities__map map" style={{background: 'none'}}>
+              <OfferMap city={city} offers={offers} />
+            </section>
           </div>
         </div>
       </div>
