@@ -1,7 +1,7 @@
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
-import { City } from '../../types/city';
+import { City, OfferPoint } from '../../types/city';
 import { Offer } from '../../types/offer';
 import { URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
@@ -17,32 +17,28 @@ const defaultCustomIcon = leaflet.icon({
   iconAnchor: [20, 40],
 });
 
+const mapContainerStyle = { height: '100%', minHeight: '500px', margin: '0 auto' };
+
 function OfferMap({city, offers}: OfferMapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
   useEffect(() => {
-    if (map) {
-      offers.forEach((ofr) => {
-        if(ofr.coords) {
-          leaflet
-            .marker({
-              lat: ofr.coords.lat,
-              lng: ofr.coords.lng,
-            }, {
-              icon: defaultCustomIcon,
-            })
-            .addTo(map);
+    if (map && offers.length > 0) {
+      const createMarker = (coords: OfferPoint) => {
+        leaflet.marker({ lat: coords.lat, lng: coords.lng }, { icon: defaultCustomIcon }).addTo(map);
+      };
+
+      offers.forEach((offer) => {
+        if (offer.coords) {
+          createMarker(offer.coords);
         }
       });
     }
   }, [map, offers]);
 
   return (
-    <div
-      style={{ height: '100%', minHeight: '500px', margin: '0 auto' }} ref={mapRef}
-    >
-    </div>
+    <div style={mapContainerStyle} ref={mapRef}></div>
   );
 }
 
