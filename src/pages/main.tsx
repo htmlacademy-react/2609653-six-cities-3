@@ -5,17 +5,10 @@ import OfferMap from '../components/OfferMap/OfferMap';
 import { useAppSelector } from '../hooks';
 import { cities } from '../mocks/cities';
 
-type MainProps = {
-  //city: City;
-  //placesCount: number;
-  //offers: Offer[];
-}
-
-export default function MainPage(props: MainProps) {
+export default function MainPage() {
 //const state = useAppSelector((state) => state);
   const currentCity = useAppSelector((state) => state.city);
   const offers = useAppSelector((state) => state.offers);
-  //const dispatch = useAppDispatch();
 
   return (
     <main className="page__main page__main--index">
