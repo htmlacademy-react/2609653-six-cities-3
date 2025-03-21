@@ -1,60 +1,35 @@
+//import { current } from '@reduxjs/toolkit';
+import CityList from '../components/CityList/CityList';
 import OfferList from '../components/OfferList/OfferList';
 import OfferMap from '../components/OfferMap/OfferMap';
-import { City } from '../types/city';
-import { Offer } from '../types/offer';
+import { useAppSelector } from '../hooks';
+import { cities } from '../mocks/cities';
 
 type MainProps = {
-  city: City;
-  placesCount: number;
-  offers: Offer[];
+  //city: City;
+  //placesCount: number;
+  //offers: Offer[];
 }
 
 export default function MainPage(props: MainProps) {
-  const { city, placesCount, offers } = props;
+//const state = useAppSelector((state) => state);
+  const currentCity = useAppSelector((state) => state.city);
+  const offers = useAppSelector((state) => state.offers);
+  //const dispatch = useAppDispatch();
+
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <ul className="locations__list tabs__list">
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Paris</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Cologne</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Brussels</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item tabs__item--active">
-                <span>Amsterdam</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Hamburg</span>
-              </a>
-            </li>
-            <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
-                <span>Dusseldorf</span>
-              </a>
-            </li>
-          </ul>
+          <CityList items={cities} selected={currentCity.id} />
         </section>
       </div>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{placesCount} places to stay in Amsterdam</b>
+            <b className="places__found">{offers.length} {offers.length !== 1 ? 'places' : 'place'} to stay in {currentCity.name}</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}> Popular
@@ -73,7 +48,7 @@ export default function MainPage(props: MainProps) {
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" style={{background: 'none'}}>
-              <OfferMap city={city} offers={offers} />
+              <OfferMap city={currentCity} offers={offers} />
             </section>
           </div>
         </div>

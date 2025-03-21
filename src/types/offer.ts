@@ -2,8 +2,9 @@ import { OfferPoint } from './city';
 
 export type Offer = {
     id: number;
+    uid?: string;
     title: string;
-    accomodation: 'apartment' | 'room';
+    accomodationType: 'apartment' | 'room' | 'house' | 'hotel';
     price: number;
     period: 'night';
     rating: number;

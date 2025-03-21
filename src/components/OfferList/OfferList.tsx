@@ -13,7 +13,14 @@ export default function OfferList({ offers }: OfferListProps) {
       {
         offers.map((ofr) =>
           (
-            <OfferCard {...ofr} key={ofr.id} setActiveId={setActiveId} />
+            <article key={ofr.id} className="cities__card place-card" onMouseOver={() => {
+              setActiveId(ofr.id);
+            }} onMouseOut={() => {
+              setActiveId(null);
+            }}
+            >
+              <OfferCard {...ofr} />
+            </article>
           )
         )
       }
