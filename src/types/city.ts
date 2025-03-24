@@ -1,8 +1,7 @@
 export type City = {
-    title: string;
-    lat: number;
-    lng: number;
-    zoom: number;
+    id: string;
+    name: string;
+    location?: MapPoint;
 };
 
 export type OfferPoint = {
@@ -16,8 +15,3 @@ type MapPoint = {
     zoom: number;
 };
 
-export type City2 = {
-    id: string;
-    name: string;
-    location?: MapPoint;
-};

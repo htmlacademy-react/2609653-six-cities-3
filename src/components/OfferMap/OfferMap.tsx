@@ -1,13 +1,13 @@
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
-import { City2, OfferPoint } from '../../types/city';
+import { City, OfferPoint } from '../../types/city';
 import { Offer } from '../../types/offer';
 import { URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
 
 type OfferMapProps = {
-  city: City2;
+  city: City;
   offers: Offer[];
 }
 

@@ -1,6 +1,6 @@
-import { City2 } from '../types/city';
+import { City } from '../types/city';
 
-export const cities: City2[] = [
+export const cities: City[] = [
   {
     id: 'paris',
     name: 'Paris',

@@ -5,7 +5,6 @@ import { Offer } from '../../types/offer';
 export type OfferCardProps = Offer;
 
 export default function OfferCard(props: OfferCardProps) {
-  //const { setActiveId } = props;
   return (
     <>
       {props.isPremium &&
@@ -39,7 +38,7 @@ export default function OfferCard(props: OfferCardProps) {
         <h2 className="place-card__name">
           <Link to={`/offer/${props.id}`}>{props.title}</Link>
         </h2>
-        <p className="place-card__type">{props.accomodationType}</p>
+        <p className="place-card__type">{props.type}</p>
       </div>
     </>
   );

@@ -1,7 +1,19 @@
-//import { createAction } from '@reduxjs/toolkit';
-//import { City2 } from '../types/city';
+import { City } from '../types/city';
+import { Offer } from '../types/offer';
 
-//export const selectCity = createAction('offers/setCity');
-//export const loadOffers = createAction('city/offers');
+const enum ActionType {
+    SetCity = 'offers/setCity',
+    Assign = 'offers/assign'
+}
 
-//export { setCity };
+const setCity = (city: City) => ({
+  type: ActionType.SetCity,
+  payload: city
+});
+
+const assignOffers = (offers: Offer[]) => ({
+  type: ActionType.Assign,
+  payload: offers
+});
+
+export { ActionType, setCity, assignOffers };

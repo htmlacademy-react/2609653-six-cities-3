@@ -4,7 +4,7 @@ export type Offer = {
     id: number;
     uid?: string;
     title: string;
-    accomodationType: 'apartment' | 'room' | 'house' | 'hotel';
+    type: 'apartment' | 'room' | 'house' | 'hotel';
     price: number;
     period: 'night';
     rating: number;

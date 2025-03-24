@@ -1,13 +1,13 @@
 import { useAppDispatch } from '../../hooks';
-import { setCity } from '../../store/reducer';
-import { City2 } from '../../types/city';
+import { setCity } from '../../store/action';
+import { City } from '../../types/city';
 
 type CityListProps = {
-    items: City2[];
-    selected?: string;
+    items: City[];
+    cityId?: string;
 };
 
-export default function CityList({ items, selected }: CityListProps) {
+export default function CityList({ items, cityId }: CityListProps) {
   const dispatch = useAppDispatch();
 
   if (items.length === 0) {
@@ -19,7 +19,7 @@ export default function CityList({ items, selected }: CityListProps) {
         items.map((c) =>
           (
             <li key={c.id} className="locations__item">
-              <a className={`locations__item-link tabs__item${selected === c.id ? ' tabs__item--active' : ''}` } href={`#${c.id}`} onClick={() => dispatch(setCity(c))}>
+              <a className={`locations__item-link tabs__item${cityId === c.id ? ' tabs__item--active' : ''}` } href={`#${c.id}`} onClick={() => dispatch(setCity(c))}>
                 <span>{c.name}</span>
               </a>
             </li>

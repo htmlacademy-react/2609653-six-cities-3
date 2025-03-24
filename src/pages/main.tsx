@@ -1,28 +1,38 @@
-//import { current } from '@reduxjs/toolkit';
+import { useEffect } from 'react';
 import CityList from '../components/CityList/CityList';
 import OfferList from '../components/OfferList/OfferList';
 import OfferMap from '../components/OfferMap/OfferMap';
-import { useAppSelector } from '../hooks';
+import { useAppDispatch, useAppSelector } from '../hooks';
 import { cities } from '../mocks/cities';
+import { assignOffers } from '../store/action';
+import { OFFER_LIMIT_DEFFAULT } from '../const';
+import { fetchOffers } from '../mocks/fetchOffers';
 
 export default function MainPage() {
-//const state = useAppSelector((state) => state);
   const currentCity = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offers);
+  const currentOffers = useAppSelector((state) => state.offers);
+  const dispatch = useAppDispatch();
+
+  useEffect(
+    () => {
+      const offers = fetchOffers(currentCity, OFFER_LIMIT_DEFFAULT);
+      dispatch(assignOffers(offers));
+    }, [currentCity, dispatch]
+  );
 
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CityList items={cities} selected={currentCity.id} />
+          <CityList items={cities} cityId={currentCity.id} />
         </section>
       </div>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{offers.length} {offers.length !== 1 ? 'places' : 'place'} to stay in {currentCity.name}</b>
+            <b className="places__found">{currentOffers.length} {currentOffers.length === 1 ? 'place' : 'places'} to stay in {currentCity.name}</b>
             <form className="places__sorting" action="#" method="get">
               <span className="places__sorting-caption">Sort by</span>
               <span className="places__sorting-type" tabIndex={0}> Popular
@@ -37,11 +47,11 @@ export default function MainPage() {
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <OfferList offers={offers} />
+            <OfferList offers={currentOffers} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" style={{background: 'none'}}>
-              <OfferMap city={currentCity} offers={offers} />
+              <OfferMap city={currentCity} offers={currentOffers} />
             </section>
           </div>
         </div>
