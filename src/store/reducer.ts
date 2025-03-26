@@ -1,31 +1,18 @@
-import { City } from '../types/city';
-import { Offer } from '../types/offer';
 import { cities } from '../mocks/cities';
-import { offersInitial } from '../mocks/offers-init';
 import { OffersState } from '../types/offerState';
-import { ActionType } from './action';
+import { assignOffers, selectCity } from './action';
+import { createReducer } from '@reduxjs/toolkit';
 
-const initialState: OffersState = { city: cities[0], offers: offersInitial };
+const initialState: OffersState = { city: cities[0], offers: [] };
 
-function reducer(state: OffersState = initialState, action: { payload: unknown; type: ActionType }) {
-  switch (action.type) {
-    case ActionType.SetCity: {
-      return {
-        city: action.payload as City,
-        offers: []
-      };
-    }
-
-    case ActionType.Assign: {
-      return {
-        city: state.city,
-        offers: action.payload as Offer[]
-      };
-    }
-
-    default:
-      return state;
-  }
-}
+const reducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(selectCity, (state, action) => {
+      state.city = action.payload;
+    })
+    .addCase(assignOffers, (state, action) => {
+      state.offers = action.payload;
+    });
+});
 
 export { reducer };
