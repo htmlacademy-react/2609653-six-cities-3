@@ -36,7 +36,7 @@ export default function FavoriteOfferCard(props: Offer) {
         <h2 className="place-card__name">
           <a href="#">{props.title}</a>
         </h2>
-        <p className="place-card__type">{props.accomodationType}</p>
+        <p className="place-card__type">{props.type}</p>
       </div>
     </article>
   );
