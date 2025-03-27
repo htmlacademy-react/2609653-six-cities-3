@@ -1,27 +1,19 @@
 import { Link } from 'react-router-dom';
-import { IMG_FOLDER, MAX_RATING_VALUE } from '../../const';
+import { MAX_RATING_VALUE } from '../../const';
 import { Offer } from '../../types/offer';
 
-export type OfferCardProps = Offer & {
-  setActiveId: (id: number | null) => void;
-};
+export type OfferCardProps = Offer;
 
 export default function OfferCard(props: OfferCardProps) {
-  const { setActiveId } = props;
   return (
-    <article className="cities__card place-card" onMouseOver={() => {
-      setActiveId(props.id);
-    }} onMouseOut={() => {
-      setActiveId(null);
-    }}
-    >
+    <>
       {props.isPremium &&
         <div className="place-card__mark">
           <span>Premium</span>
         </div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`/offer/${props.id}`}>
-          <img className="place-card__image" src={`${IMG_FOLDER}/${props.imgSrc}`} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={props.imgSrc} width="260" height="200" alt="Place image" />
         </Link>
       </div>
       <div className="place-card__info">
@@ -46,8 +38,8 @@ export default function OfferCard(props: OfferCardProps) {
         <h2 className="place-card__name">
           <Link to={`/offer/${props.id}`}>{props.title}</Link>
         </h2>
-        <p className="place-card__type">{props.accomodation}</p>
+        <p className="place-card__type">{props.type}</p>
       </div>
-    </article>
+    </>
   );
 }

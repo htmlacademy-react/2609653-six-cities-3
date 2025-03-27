@@ -4,7 +4,7 @@ export const offers: Offer[] = [
   {
     id: 1205,
     title: 'Beautiful & luxurious apartment at great location',
-    accomodation: 'apartment',
+    type: 'apartment',
     price: 120,
     period: 'night',
     rating: 4,
@@ -15,7 +15,7 @@ export const offers: Offer[] = [
   {
     id: 1709,
     title: 'Wood and stone place',
-    accomodation: 'room',
+    type: 'room',
     price: 80,
     period: 'night',
     rating: 4,
@@ -26,7 +26,7 @@ export const offers: Offer[] = [
   {
     id: 2354,
     title: 'Canal View Prinsengracht',
-    accomodation: 'apartment',
+    type: 'apartment',
     price: 132,
     period: 'night',
     rating: 4,
@@ -37,7 +37,7 @@ export const offers: Offer[] = [
   {
     id: 8871,
     title: 'Nice, cozy, warm big bed apartment',
-    accomodation: 'apartment',
+    type: 'apartment',
     price: 180,
     period: 'night',
     rating: 5,
@@ -48,7 +48,7 @@ export const offers: Offer[] = [
   {
     id: 5536,
     title: 'Wood and stone place (2)',
-    accomodation: 'room',
+    type: 'room',
     price: 80,
     period: 'night',
     rating: 4,
@@ -62,7 +62,7 @@ export const favoriteOffers: Offer[] = [
   {
     id: 1709,
     title: 'Wood and stone place',
-    accomodation: 'room',
+    type: 'room',
     price: 80,
     period: 'night',
     rating: 4,
@@ -73,7 +73,7 @@ export const favoriteOffers: Offer[] = [
   {
     id: 8871,
     title: 'Nice, cozy, warm big bed apartment',
-    accomodation: 'apartment',
+    type: 'apartment',
     price: 180,
     period: 'night',
     rating: 5,
