@@ -13,8 +13,8 @@ function useMap(
     const createMapInstance = () => {
       const mapConfig = {
         center: {
-          lat: city.location?.lat || 0,
-          lng: city.location?.lng || 0,
+          lat: city.location?.latitude || 0,
+          lng: city.location?.longitude || 0,
         },
         zoom: city.location?.zoom,
       };

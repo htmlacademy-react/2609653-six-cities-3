@@ -4,8 +4,8 @@ export const AMSTERDAM: City = {
   id: 'amsterdam',
   name: 'Amsterdam',
   location: {
-    lat: 52.3676000,
-    lng: 4.90410000,
+    latitude: 52.3676000,
+    longitude: 4.90410000,
     zoom: 10
   }
 };

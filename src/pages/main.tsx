@@ -4,28 +4,31 @@ import OfferList from '../components/OfferList/OfferList';
 import OfferMap from '../components/OfferMap/OfferMap';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { cities } from '../mocks/cities';
-import { assignOffers } from '../store/action';
-import { OFFER_LIMIT_DEFFAULT } from '../const';
-import { fetchOffers } from '../mocks/fetchOffers';
+import { fetchOffersAction } from '../store/api-actions';
+import Spinner from '../components/Layout/Spinner';
 
 export default function MainPage() {
   const currentCity = useAppSelector((state) => state.city);
   const currentOffers = useAppSelector((state) => state.offers);
+  const offersLoading = useAppSelector((state) => state.loading);
   const dispatch = useAppDispatch();
 
   useEffect(
     () => {
-      const offers = fetchOffers(currentCity, OFFER_LIMIT_DEFFAULT);
-      dispatch(assignOffers(offers));
+      dispatch(fetchOffersAction());
     }, [currentCity, dispatch]
   );
+
+  if(offersLoading) {
+    return (<Spinner />);
+  }
 
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <CityList items={cities} cityId={currentCity.id} />
+          <CityList items={cities} cityName={currentCity.name} />
         </section>
       </div>
       <div className="cities">
