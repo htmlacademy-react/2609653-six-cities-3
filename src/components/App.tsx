@@ -7,7 +7,6 @@ import LoginPage from '../pages/login';
 import FavoritesPage from '../pages/favorites';
 import PrivateRoute from './Routes/PrivateRoute';
 import { AppRoute, AuthorizationStatus } from '../const';
-import { favoriteOffers } from '../mocks/offers';
 import './App.css';
 
 function App() {
