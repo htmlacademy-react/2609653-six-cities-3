@@ -18,7 +18,7 @@ function App() {
           <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route path={AppRoute.Favorites} element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
-              <FavoritesPage offers={favoriteOffers} />
+              <FavoritesPage />
             </PrivateRoute>
           }
           />

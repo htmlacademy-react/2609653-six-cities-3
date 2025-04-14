@@ -1,7 +1,8 @@
 import FavoriteOfferCard from '../components/OfferCard/FavoriteOfferCard';
-import { OfferList } from '../types/offer';
+import { Offer } from '../types/offer';
 
-function FavoritesPage({ offers }: OfferList) {
+function FavoritesPage() {
+  const offers: Offer[] = [];
   const hasOffers = offers.length > 0;
   const empty = (
     <main className="page__main page__main--favorites page__main--favorites-empty">

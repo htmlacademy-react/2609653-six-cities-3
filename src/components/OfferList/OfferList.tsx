@@ -3,7 +3,7 @@ import OfferCard from '../OfferCard/OfferCard';
 import { OfferList as OfferListProps } from '../../types/offer';
 
 export default function OfferList({ offers }: OfferListProps) {
-  const [, setActiveId] = useState<number | null>(null);
+  const [, setActiveId] = useState<string | null>(null);
 
   if (offers.length === 0) {
     return (<p>Список пуст</p>);
