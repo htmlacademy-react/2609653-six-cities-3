@@ -1,10 +1,11 @@
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import useMap from '../../hooks/useMap';
-import { City, OfferPoint } from '../../types/city';
+import { City } from '../../types/city';
 import { Offer } from '../../types/offer';
 import { URL_MARKER_DEFAULT } from '../../const';
 import { useEffect, useRef } from 'react';
+import { MapPoint } from '../../types/mapPoint';
 
 type OfferMapProps = {
   city: City;
@@ -25,17 +26,17 @@ function OfferMap({ city, offers }: OfferMapProps) {
 
   useEffect(() => {
     if (map && offers.length > 0) {
-      const createMarker = (coords: OfferPoint) => {
-        leaflet.marker({ lat: coords.lat, lng: coords.lng }, { icon: defaultCustomIcon }).addTo(map);
+      const createMarker = ({ latitude, longitude }: MapPoint) => {
+        leaflet.marker({ lat: latitude, lng: longitude }, { icon: defaultCustomIcon }).addTo(map);
       };
 
       if (city.location) {
-        map.setView(new leaflet.LatLng(city.location.lat, city.location.lng), city.location?.zoom);
+        map.setView(new leaflet.LatLng(city.location.latitude, city.location.longitude), city.location?.zoom);
       }
 
       offers.forEach((offer) => {
-        if (offer.coords) {
-          createMarker(offer.coords);
+        if (offer.location) {
+          createMarker(offer.location);
         }
       });
     }

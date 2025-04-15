@@ -4,10 +4,10 @@ import { City } from '../../types/city';
 
 type CityListProps = {
     items: City[];
-    cityId?: string;
+    cityName?: string;
 };
 
-export default function CityList({ items, cityId }: CityListProps) {
+export default function CityList({ items, cityName }: CityListProps) {
   const dispatch = useAppDispatch();
 
   if (items.length === 0) {
@@ -18,8 +18,8 @@ export default function CityList({ items, cityId }: CityListProps) {
       {
         items.map((c) =>
           (
-            <li key={c.id} className="locations__item">
-              <a className={`locations__item-link tabs__item${cityId === c.id ? ' tabs__item--active' : ''}` } href={`#${c.id}`} onClick={() => dispatch(selectCity(c))}>
+            <li key={c.name.toLowerCase()} className="locations__item">
+              <a className={`locations__item-link tabs__item${cityName === c.name ? ' tabs__item--active' : ''}` } href={`#${c.name.toLowerCase()}`} onClick={() => dispatch(selectCity(c))}>
                 <span>{c.name}</span>
               </a>
             </li>
