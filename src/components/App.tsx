@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import PageLayout from './Layout/PageLayout';
 import NotFound from '../pages/not-found';
 import MainPage from '../pages/main';
@@ -6,18 +6,31 @@ import OfferPage from '../pages/offer';
 import LoginPage from '../pages/login';
 import FavoritesPage from '../pages/favorites';
 import PrivateRoute from './Routes/PrivateRoute';
-import { AppRoute, AuthorizationStatus } from '../const';
-import './App.css';
+import { AppRoute } from '../const';
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { useEffect } from 'react';
+import { checkAuthAction } from '../store/api-actions';
+import HistoryRouter from './HistoryRouter';
+import browserHistory from '../browser-history';
 
 function App() {
+  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const dispatch = useAppDispatch();
+
+  useEffect(
+    () => {
+      dispatch(checkAuthAction());
+    }, [dispatch]
+  );
+
   return (
-    <BrowserRouter>
+    <HistoryRouter history={browserHistory}>
       <Routes>
         <Route path={AppRoute.Main} element={<PageLayout />}>
           <Route index element={<MainPage />} />
           <Route path={AppRoute.Login} element={<LoginPage />} />
           <Route path={AppRoute.Favorites} element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+            <PrivateRoute authorizationStatus={authStatus}>
               <FavoritesPage />
             </PrivateRoute>
           }
@@ -26,7 +39,7 @@ function App() {
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
