@@ -41,19 +41,6 @@ function OfferMap({ city, offers, activeOfferId }: OfferMapProps) {
     });
   }, []);
 
-  const toggleHighlighted = (marker: leaflet.Marker, toggle: boolean) => {
-    if(map === null) {
-      return;
-    }
-    if(toggle) {
-      map.addLayer(marker);
-    }
-    else {
-      map.removeLayer(marker);
-    }
-  };
-
-
   useEffect(() => {
     //console.log(`Active Offer: ${activeOfferId};`);
     if (map && city.location && offers.length) {
