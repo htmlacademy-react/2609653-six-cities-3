@@ -9,12 +9,13 @@ import PrivateRoute from './Routes/PrivateRoute';
 import { AppRoute } from '../const';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { useEffect } from 'react';
-import { checkAuthAction } from '../store/api-actions';
+import { checkAuthAction } from '../store/thunks/user-actions';
 import HistoryRouter from './HistoryRouter';
 import browserHistory from '../browser-history';
+import { getAuthorizationStatus } from '../store/selectors';
 
 function App() {
-  const authStatus = useAppSelector((state) => state.authorizationStatus);
+  const authStatus = useAppSelector(getAuthorizationStatus);
   const dispatch = useAppDispatch();
 
   useEffect(

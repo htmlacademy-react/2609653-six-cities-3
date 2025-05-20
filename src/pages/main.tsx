@@ -1,17 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CityList from '../components/CityList/CityList';
 import OfferList from '../components/OfferList/OfferList';
 import OfferMap from '../components/OfferMap/OfferMap';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { cities } from '../mocks/cities';
-import { fetchOffersAction } from '../store/api-actions';
+
 import Spinner from '../components/Layout/Spinner';
+import { getAuthCheckedStatus, getCurrentCity, getCurrentOffers, getDataLoading, getErrorStatus } from '../store/selectors';
+import LoadingFallback from '../components/LoadingFallback';
+import { fetchOffersAction } from '../store/thunks/offer-actions';
 
 export default function MainPage() {
-  const currentCity = useAppSelector((state) => state.city);
-  const currentOffers = useAppSelector((state) => state.offers);
-  const offersLoading = useAppSelector((state) => state.loading);
+  const isAuthChecked = useAppSelector(getAuthCheckedStatus);
+  const currentCity = useAppSelector(getCurrentCity);
+  const currentOffers = useAppSelector(getCurrentOffers);
+  const offersLoading = useAppSelector(getDataLoading);
+  const isLoadingError = useAppSelector(getErrorStatus);
+
   const dispatch = useAppDispatch();
+  const[activeOfferId, setActiveOfferId] = useState<string | null>(null);
 
   useEffect(
     () => {
@@ -19,8 +26,17 @@ export default function MainPage() {
     }, [currentCity, dispatch]
   );
 
-  if(offersLoading) {
+  function handleCardHover(id: string | null) {
+    setActiveOfferId(id);
+  }
+
+  if (!isAuthChecked || offersLoading) {
     return (<Spinner />);
+  }
+
+  if (isLoadingError) {
+    return (
+      <LoadingFallback />);
   }
 
   return (
@@ -43,18 +59,18 @@ export default function MainPage() {
                   <use xlinkHref="#icon-arrow-select"></use>
                 </svg>
               </span>
-              <ul className="places__options places__options--custom places__options--opened">
+              <ul className="places__options places__options--custom">
                 <li className="places__option places__option--active" tabIndex={0}>Popular</li>
                 <li className="places__option" tabIndex={0}>Price: low to high</li>
                 <li className="places__option" tabIndex={0}>Price: high to low</li>
                 <li className="places__option" tabIndex={0}>Top rated first</li>
               </ul>
             </form>
-            <OfferList offers={currentOffers} />
+            <OfferList offers={currentOffers} onCardHover={handleCardHover} />
           </section>
           <div className="cities__right-section">
             <section className="cities__map map" style={{background: 'none'}}>
-              <OfferMap city={currentCity} offers={currentOffers} />
+              <OfferMap city={currentCity} offers={currentOffers} activeOfferId={activeOfferId} />
             </section>
           </div>
         </div>

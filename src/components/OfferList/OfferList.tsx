@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import OfferCard from '../OfferCard/OfferCard';
 import { OfferList as OfferListProps } from '../../types/offer';
+import React from 'react';
 
-export default function OfferList({ offers }: OfferListProps) {
-  const [, setActiveId] = useState<string | null>(null);
+function OfferList({ offers, onCardHover }: OfferListProps) {
 
   if (offers.length === 0) {
     return (<p>Список пуст</p>);
@@ -14,9 +13,9 @@ export default function OfferList({ offers }: OfferListProps) {
         offers.map((ofr) =>
           (
             <article key={ofr.id} className="cities__card place-card" onMouseOver={() => {
-              setActiveId(ofr.id);
+              onCardHover(ofr.id);
             }} onMouseOut={() => {
-              setActiveId(null);
+              onCardHover(null);
             }}
             >
               <OfferCard {...ofr} />
@@ -27,4 +26,4 @@ export default function OfferList({ offers }: OfferListProps) {
     </div>);
 }
 
-
+export default React.memo(OfferList);

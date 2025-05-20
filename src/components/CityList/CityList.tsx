@@ -1,13 +1,14 @@
+import React from 'react';
 import { useAppDispatch } from '../../hooks';
-import { selectCity } from '../../store/action';
 import { City } from '../../types/city';
+import { selectCity } from '../../store/mainScreenSlice';
 
 type CityListProps = {
     items: City[];
     cityName?: string;
 };
 
-export default function CityList({ items, cityName }: CityListProps) {
+function CityList({ items, cityName }: CityListProps) {
   const dispatch = useAppDispatch();
 
   if (items.length === 0) {
@@ -28,3 +29,5 @@ export default function CityList({ items, cityName }: CityListProps) {
       }
     </ul>);
 }
+
+export default React.memo(CityList);
