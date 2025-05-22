@@ -11,11 +11,8 @@ export const fetchOffersAction = createAsyncThunk<Offer[], undefined, {
 }>(
   'data/loadOffers',
   async (_arg, { getState, extra: api }) => {
-    //dispatch(setLoading(true));
     const { data } = await api.get<Offer[]>(ApiRoute.Offers);
-    //dispatch(setLoading(false)); //Запрос уже завершился, крутилку можно убрать
     const city = getState().mainScreen.city;
-    //dispatch(loadOffers(data.filter((ofr) => (ofr.city.name === city.name))));
     return data.filter((ofr) => (ofr.city.name === city.name));
   },
 );

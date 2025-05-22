@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CityList from '../components/CityList/CityList';
 import OfferList from '../components/OfferList/OfferList';
 import OfferMap from '../components/OfferMap/OfferMap';
@@ -26,17 +26,16 @@ export default function MainPage() {
     }, [currentCity, dispatch]
   );
 
-  function handleCardHover(id: string | null) {
+  const handleCardHover = useCallback((id: string | null) => {
     setActiveOfferId(id);
-  }
+  }, []);
 
   if (!isAuthChecked || offersLoading) {
     return (<Spinner />);
   }
 
   if (isLoadingError) {
-    return (
-      <LoadingFallback />);
+    return (<LoadingFallback />);
   }
 
   return (

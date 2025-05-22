@@ -30,7 +30,6 @@ const mapContainerStyle = { height: '100%', minHeight: '500px', margin: '0 auto'
 function OfferMap({ city, offers, activeOfferId }: OfferMapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
-  const activeId = useRef<string | null>(activeOfferId || null);
   const activeMarker = useRef<leaflet.Marker | null>(null);
 
   const pickMarkers = useCallback((mapObj: leaflet.Map, center: leaflet.LatLngExpression, points: leaflet.LatLngExpression[], zoom: number) => {
@@ -42,7 +41,6 @@ function OfferMap({ city, offers, activeOfferId }: OfferMapProps) {
   }, []);
 
   useEffect(() => {
-    //console.log(`Active Offer: ${activeOfferId};`);
     if (map && city.location && offers.length) {
       pickMarkers(map, { lat: city.location.latitude, lng: city.location.longitude },
         offers.map((x) => new leaflet.LatLng(x.location.latitude, x.location.longitude)),
@@ -51,8 +49,6 @@ function OfferMap({ city, offers, activeOfferId }: OfferMapProps) {
   }, [city.location, map, offers]);
 
   useEffect(() => {
-    //console.log(activeOfferId);
-    //console.log('activeId.current:' + activeId.current)
     if(!map) {
       return;
     }
@@ -68,8 +64,6 @@ function OfferMap({ city, offers, activeOfferId }: OfferMapProps) {
         activeMarker.current.addTo(map);
       }
     }
-
-    activeId.current = activeOfferId || null;
   }, [map, activeOfferId, offers]);
 
   return (
