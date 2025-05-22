@@ -41,7 +41,7 @@ function LoginPage() {
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#" onClick={() => navigate(AppRoute.Main)} >
+            <a className="locations__item-link" href="#amsterdam" onClick={() => navigate(AppRoute.Main)} >
               <span>Amsterdam</span>
             </a>
           </div>
