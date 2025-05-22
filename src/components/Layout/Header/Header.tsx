@@ -1,10 +1,10 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { AppRoute, AuthorizationStatus } from '../../../const';
 import { logoutAction } from '../../../store/thunks/user-actions';
-import { getUserEmail } from '../../../services/userData';
+import { getUserEmail, getUserImageUrl } from '../../../services/userData';
 import { getAuthorizationStatus } from '../../../store/selectors';
+import Avatar from './Avatar';
 
 function Header() {
   const authStatus = useAppSelector(getAuthorizationStatus);
@@ -26,8 +26,7 @@ function Header() {
               <ul className="header__nav-list">
                 <li className="header__nav-item user">
                   <a className="header__nav-link header__nav-link--profile" href="#">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
-                    </div>
+                    <Avatar src={getUserImageUrl()} />
                     <span className="header__user-name user__name">{getUserEmail()}</span>
                     <span className="header__favorite-count">0</span>
                   </a>
@@ -58,4 +57,4 @@ function Header() {
   );
 }
 
-export default React.memo(Header);
+export default Header;
