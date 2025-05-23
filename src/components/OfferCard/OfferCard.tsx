@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { MAX_RATING_VALUE } from '../../const';
 import { Offer } from '../../types/offer';
+import React from 'react';
 
 export type OfferCardProps = Offer;
 
-export default function OfferCard(props: OfferCardProps) {
+function OfferCard(props: OfferCardProps) {
   return (
     <>
       {props.isPremium &&
@@ -43,3 +44,5 @@ export default function OfferCard(props: OfferCardProps) {
     </>
   );
 }
+
+export default React.memo(OfferCard);

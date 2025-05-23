@@ -30,4 +30,5 @@ export type OfferOld = {
 
 export type OfferList = {
     offers: Offer[];
+    onCardHover: (id: string | null) => void;
 };

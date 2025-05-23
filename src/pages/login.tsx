@@ -1,7 +1,7 @@
 import { useRef, FormEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../hooks';
-import { loginAction } from '../store/api-actions';
+import { loginAction } from '../store/thunks/user-actions';
 import { AppRoute } from '../const';
 
 function LoginPage() {
@@ -41,7 +41,7 @@ function LoginPage() {
         </section>
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#" onClick={() => navigate(AppRoute.Main)} >
+            <a className="locations__item-link" href="#amsterdam" onClick={() => navigate(AppRoute.Main)} >
               <span>Amsterdam</span>
             </a>
           </div>

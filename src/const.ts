@@ -14,7 +14,6 @@ export enum AuthorizationStatus {
     Unknown = 'UNKNOWN',
 }
 
-
 export enum ApiRoute {
     Offers = '/offers',
     Login = '/login',
@@ -28,3 +27,4 @@ export const OFFER_LIMIT_DEFFAULT = 6;
 export const AUTH_TOKEN_KEY_NAME = 'six-cities-token';
 export const USER_EMAIL_KEY_NAME = 'user-email';
 export const USER_IMAGE_KEY_NAME = 'user-image-url';
+export const ERROR_DISPLAY_TIME = 2000;
