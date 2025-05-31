@@ -11,7 +11,8 @@ export const fetchOffersAction = createAsyncThunk<Offer[], undefined, {
 }>(
   'data/loadOffers',
   async (_arg, { getState, extra: api }) => {
-    const { data } = await api.get<Offer[]>(ApiRoute.Offers);
+    const result = await api.get<Offer[]>(ApiRoute.Offers);
+    const { data } = result;
     const city = getState().mainScreen.city;
     return data.filter((ofr) => (ofr.city.name === city.name));
   },
