@@ -10,8 +10,6 @@ import { AppRoute } from '../const';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { useEffect } from 'react';
 import { checkAuthAction } from '../store/thunks/user-actions';
-import HistoryRouter from './HistoryRouter';
-import browserHistory from '../browser-history';
 import { getAuthorizationStatus } from '../store/selectors';
 
 function App() {
@@ -25,22 +23,20 @@ function App() {
   );
 
   return (
-    <HistoryRouter history={browserHistory}>
-      <Routes>
-        <Route path={AppRoute.Main} element={<PageLayout />}>
-          <Route index element={<MainPage />} />
-          <Route path={AppRoute.Login} element={<LoginPage />} />
-          <Route path={AppRoute.Favorites} element={
-            <PrivateRoute authorizationStatus={authStatus}>
-              <FavoritesPage />
-            </PrivateRoute>
-          }
-          />
-          <Route path={AppRoute.Offer} element={<OfferPage />} />
-        </Route>
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </HistoryRouter>
+    <Routes>
+      <Route path={AppRoute.Main} element={<PageLayout />}>
+        <Route index element={<MainPage />} />
+        <Route path={AppRoute.Login} element={<LoginPage />} />
+        <Route path={AppRoute.Favorites} element={
+          <PrivateRoute authorizationStatus={authStatus}>
+            <FavoritesPage />
+          </PrivateRoute>
+        }
+        />
+        <Route path={AppRoute.Offer} element={<OfferPage />} />
+      </Route>
+      <Route path='*' element={<NotFound />} />
+    </Routes>
   );
 }
 

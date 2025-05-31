@@ -5,6 +5,11 @@ import { withHistory } from './mock-history-wrapper';
 import { withStore } from './mock-store-wrapper';
 import { makeFakeStore } from '../mocks/utils';
 import { AppRoute, AuthorizationStatus } from '../const';
+import axios from 'axios';
+
+vi.mock('../services/api', () => ({
+  createAPI: vi.fn(() => axios.create())
+}));
 
 describe('Application Routing', () => {
   let mockHistory: MemoryHistory;
