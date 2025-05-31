@@ -1,22 +1,21 @@
 import { configureMockStore } from '@jedmao/redux-mock-store';
-//import { createAPI } from '../services/api';
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
 import { Action } from 'redux';
-import axios from 'axios';
 import { createAPI } from '../../services/api';
 import { State } from '../../types/state';
-import { AppThunkDispatch, extractActionsTypes } from '../../mocks/actions';
+import { AppThunkDispatch, extractActionsTypes } from '../../mocks/utils';
 import { offersExample } from '../../mocks/offers';
 import { ApiRoute } from '../../const';
 import { fetchOffersAction } from './offer-actions';
+//import { AMSTERDAM } from '../../mocks/city';
 
 
-vi.mock('../services/api', () => ({
-  createAPI: () => axios.create(),
-}));
+// vi.mock('../services/api', () => ({
+//   createAPI: vi.fn(() => axios.create())
+// }));
 
-describe('Tests Async actions', () => {
+describe('Tests Offer Async actions', () => {
   const axiosInstance = createAPI();
   const mockAxiosAdapter = new MockAdapter(axiosInstance);
   const middleware = [thunk.withExtraArgument(axiosInstance)];
@@ -24,7 +23,8 @@ describe('Tests Async actions', () => {
   let store: ReturnType<typeof mockStoreCreator>;
 
   beforeEach(() => {
-    store = mockStoreCreator({ data: { offers: [], isLoading: false, hasError: false } });
+    store = mockStoreCreator({ mainScreen: { city: { name: 'Amsterdam' }, error: null },
+      data: { offers: [], isLoading: false, hasError: false } });
   });
 
 

@@ -23,7 +23,7 @@ function LoginPage() {
   };
 
   return (
-    <main className="page__main page__main--login">
+    <main className="page__main page__main--login" data-testid="page-login">
       <div className="page__login-container container">
         <section className="login">
           <h1 className="login__title">Sign in</h1>

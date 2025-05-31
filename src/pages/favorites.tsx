@@ -5,7 +5,7 @@ function FavoritesPage() {
   const offers: Offer[] = [];
   const hasOffers = offers.length > 0;
   const empty = (
-    <main className="page__main page__main--favorites page__main--favorites-empty">
+    <main className="page__main page__main--favorites page__main--favorites-empty" data-testid="page-favorites">
       <div className="page__favorites-container container">
         <section className="favorites favorites--empty">
           <h1 className="visually-hidden">Favorites (empty)</h1>
@@ -23,7 +23,7 @@ function FavoritesPage() {
   }
 
   return(
-    <main className="page__main page__main--favorites">
+    <main className="page__main page__main--favorites" data-testid="page-favorites">
       <div className="page__favorites-container container">
         <section className="favorites">
           <h1 className="favorites__title">Saved listing</h1>

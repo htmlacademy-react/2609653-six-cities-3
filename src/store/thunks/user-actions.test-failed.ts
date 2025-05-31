@@ -5,15 +5,15 @@ import { Action } from 'redux';
 import axios from 'axios';
 import { createAPI } from '../../services/api';
 import { State } from '../../types/state';
-import { AppThunkDispatch, extractActionsTypes } from '../../mocks/actions';
-import { ApiRoute } from '../../const';
+import { AppThunkDispatch, extractActionsTypes } from '../../mocks/utils';
+import { ApiRoute, AuthorizationStatus } from '../../const';
 import { checkAuthAction, loginAction, logoutAction } from './user-actions';
 import { AuthData } from '../../types/userData';
 import { redirectToRoute } from '../action';
-import * as tokenStorage from '../../services/token';
+import * as userDataStorage from '../../services/userData';
 
 vi.mock('../services/api', () => ({
-  createAPI: () => axios.create(),
+  createAPI: vi.fn(() => axios.create())
 }));
 
 describe('Tests Async actions', () => {
@@ -24,7 +24,11 @@ describe('Tests Async actions', () => {
   let store: ReturnType<typeof mockStoreCreator>;
 
   beforeEach(() => {
-    store = mockStoreCreator({ data: { offers: [], isLoading: false, hasError: false } });
+    store = mockStoreCreator({
+      mainScreen: { city: { name: 'Amsterdam' } },
+      data: { offers: [], isLoading: false, hasError: false },
+      user: { authorizationStatus: AuthorizationStatus.Unknown }
+    });
   });
 
   describe('checkAuthAction', () => {
@@ -69,11 +73,11 @@ describe('Tests Async actions', () => {
       ]);
     });
 
-    it('should call "saveToken" once with the received token', async () => {
-      const fakeUser: AuthData = { username: 'test@test.ru', password: '123456' };
+    it('should call "saveUserData" once with the received token', async () => {
+      const fakeUser: AuthData = { username: 'volgavr@test.ru', password: '123456' };
       const fakeServerReplay = { token: 'secret' };
       mockAxiosAdapter.onPost(ApiRoute.Login).reply(200, fakeServerReplay);
-      const mockSaveToken = vi.spyOn(tokenStorage, 'saveToken');
+      const mockSaveToken = vi.spyOn(userDataStorage, 'saveUserData');
 
       await store.dispatch(loginAction(fakeUser));
 
@@ -96,9 +100,9 @@ describe('Tests Async actions', () => {
       ]);
     });
 
-    it('should one call "dropToken" with "logoutAction"', async () => {
+    it('should one call "dropUserData" with "logoutAction"', async () => {
       mockAxiosAdapter.onDelete(ApiRoute.Logout).reply(204);
-      const mockDropToken = vi.spyOn(tokenStorage, 'dropToken');
+      const mockDropToken = vi.spyOn(userDataStorage, 'dropUserData');
 
       await store.dispatch(logoutAction());
 

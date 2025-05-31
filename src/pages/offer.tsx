@@ -11,7 +11,7 @@ function OfferPage() {
   }
 
   return (
-    <main className="page__main page__main--offer">
+    <main className="page__main page__main--offer" data-testid="page-offer">
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
