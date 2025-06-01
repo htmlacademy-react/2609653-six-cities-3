@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../hooks';
 import { getErrorText } from '../../../store/selectors';
-import './ErrorMessage.css';
+import './error-message.css';
 
 function ErrorMessage(): JSX.Element | null {
   const error = useAppSelector(getErrorText);
