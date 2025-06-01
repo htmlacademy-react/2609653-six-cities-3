@@ -1,4 +1,4 @@
-import App from './app';
+import App from './App';
 import { render, screen} from '@testing-library/react';
 import { MemoryHistory, createMemoryHistory } from 'history';
 import { withHistory } from './mock-history-wrapper';
