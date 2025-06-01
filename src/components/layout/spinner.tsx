@@ -1,5 +1,5 @@
 import React from 'react';
-import './Spinner.css';
+import './spinner.css';
 
 const Spinner: React.FC = () => (
   <div className='spinner' data-testid="spinner">
