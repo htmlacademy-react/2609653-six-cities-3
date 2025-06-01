@@ -1,5 +1,5 @@
 import { offersExample } from '../mocks/offers';
-import { dataSlice } from './dataSlice';
+import { dataSlice } from './data-slice';
 import { fetchOffersAction } from './thunks/offer-actions';
 
 describe('Data Slice', () => {

@@ -1,6 +1,6 @@
 import { AuthorizationStatus } from '../const';
 import { checkAuthAction, loginAction, logoutAction } from './thunks/user-actions';
-import { userSlice } from './userSlice';
+import { userSlice } from './user-slice';
 
 describe('User Slice', () => {
   it('should return initial state with empty action', () => {

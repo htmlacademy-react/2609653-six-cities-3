@@ -1,4 +1,4 @@
-import Spinner from '../components/Layout/Spinner';
+import Spinner from '../components/layout/spinner';
 
 function LoadingPage() {
   return(

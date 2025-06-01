@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch } from '../../hooks';
 import { City } from '../../types/city';
-import { selectCity } from '../../store/mainScreenSlice';
+import { selectCity } from '../../store/main-screen-slice';
 
 type CityListProps = {
     items: City[];

@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from './Header/Header';
 import { AppRoute } from '../../const';
+import Header from './header/header';
 
 function PageLayout() {
   const location = useLocation();

@@ -1,6 +1,6 @@
 import { cities } from '../mocks/cities';
 import { AMSTERDAM } from '../mocks/city';
-import { mainScreenSlice, selectCity, setError } from './mainScreenSlice';
+import { mainScreenSlice, selectCity, setError } from './main-screen-slice';
 
 describe('Main Screen Slice', () => {
   it('should return initial state with empty action', () => {

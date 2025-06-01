@@ -2,7 +2,7 @@ import { State } from '../types/state';
 import { AuthorizationStatus } from '../const';
 import { City } from '../types/city';
 import { Offer } from '../types/offer';
-import { UserData } from '../types/userData';
+import { UserData } from '../types/user-data';
 
 export const getAuthorizationStatus = (state: Pick<State, 'user'>): AuthorizationStatus => state['user'].authorizationStatus;
 export const getAuthCheckedStatus = (state: Pick<State, 'user'>): boolean => state['user'].authorizationStatus !== AuthorizationStatus.Unknown;

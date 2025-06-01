@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 import NotFoundPage from './not-found';
-import ReviewFrom from '../components/Review/ReviewForm';
+import ReviewFrom from '../components/review/review-form';
 import { reviews } from '../mocks/reviews';
-import ReviewDisplay from '../components/Review/ReviewDisplay';
+import ReviewDisplay from '../components/review/review-display';
 
 function OfferPage() {
   const params = useParams();

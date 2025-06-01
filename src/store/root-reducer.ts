@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { userSlice } from './userSlice';
-import { dataSlice } from './dataSlice';
-import { mainScreenSlice } from './mainScreenSlice';
+import { userSlice } from './user-slice';
+import { dataSlice } from './data-slice';
+import { mainScreenSlice } from './main-screen-slice';
 
 export const rootReducer = combineReducers({
   'data': dataSlice.reducer,
