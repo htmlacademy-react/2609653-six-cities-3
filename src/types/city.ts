@@ -1,4 +1,4 @@
-import { MapPoint } from './mapPoint';
+import { MapPoint } from './map-point';
 
 export type City = {
     id?: string;

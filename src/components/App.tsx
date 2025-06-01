@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import PageLayout from './Layout/PageLayout';
+import PageLayout from './layout/page-layout';
 import NotFound from '../pages/not-found';
 import MainPage from '../pages/main';
 import OfferPage from '../pages/offer';
 import LoginPage from '../pages/login';
 import FavoritesPage from '../pages/favorites';
-import PrivateRoute from './Routes/PrivateRoute';
+import PrivateRoute from './routes/private-route';
 import { AppRoute } from '../const';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { useEffect } from 'react';

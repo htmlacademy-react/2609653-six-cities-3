@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { withHistory } from '../mock-history-wrapper';
-import OfferCard from './OfferCard';
+import OfferCard from './offer-card';
 import { offersExample } from '../../mocks/offers';
 
 describe('Component: OfferCard', () => {

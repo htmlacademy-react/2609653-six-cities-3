@@ -1,5 +1,5 @@
 import { AUTH_TOKEN_KEY_NAME, USER_EMAIL_KEY_NAME, USER_IMAGE_KEY_NAME } from '../const';
-import { UserData } from '../types/userData';
+import { UserData } from '../types/user-data';
 
 export const getUserEmail = (): string => (
   localStorage.getItem(USER_EMAIL_KEY_NAME) ?? ''

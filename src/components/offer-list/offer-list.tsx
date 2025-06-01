@@ -1,4 +1,4 @@
-import OfferCard from '../OfferCard/OfferCard';
+import OfferCard from '../offer-card/offer-card';
 import { OfferList as OfferListProps } from '../../types/offer';
 import React from 'react';
 

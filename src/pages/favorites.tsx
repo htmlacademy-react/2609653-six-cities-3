@@ -1,4 +1,4 @@
-import FavoriteOfferCard from '../components/OfferCard/FavoriteOfferCard';
+import FavoriteOfferCard from '../components/offer-card/favorite-offer-card';
 import { Offer } from '../types/offer';
 
 function FavoritesPage() {

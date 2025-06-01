@@ -2,7 +2,7 @@ import { AuthorizationStatus } from '../const';
 import { store } from '../store';
 import { City } from './city';
 import { Offer } from './offer';
-import { UserData } from './userData';
+import { UserData } from './user-data';
 
 export type AppState = {
     error: string | null;

@@ -2,9 +2,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { AppRoute, AuthorizationStatus } from '../../../const';
 import { logoutAction } from '../../../store/thunks/user-actions';
-import { getUserEmail, getUserImageUrl } from '../../../services/userData';
+import { getUserEmail, getUserImageUrl } from '../../../services/user-data';
 import { getAuthorizationStatus } from '../../../store/selectors';
-import Avatar from './Avatar';
+import Avatar from './avatar';
 
 function Header() {
   const authStatus = useAppSelector(getAuthorizationStatus);

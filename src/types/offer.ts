@@ -1,5 +1,5 @@
 import { City, OfferPoint } from './city';
-import { MapPoint } from './mapPoint';
+import { MapPoint } from './map-point';
 
 export type Offer = {
     id: string;

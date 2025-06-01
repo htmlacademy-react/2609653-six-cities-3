@@ -3,7 +3,7 @@ import { AppRoute, AuthorizationStatus } from '../../const';
 import { Route, Routes } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import { withHistory } from '../mock-history-wrapper';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from './private-route';
 
 describe('Test for Component: PrivateRoute', () => {
   let mockHistory: MemoryHistory;

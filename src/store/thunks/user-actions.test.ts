@@ -7,9 +7,9 @@ import { State } from '../../types/state';
 import { AppThunkDispatch, extractActionsTypes } from '../../mocks/utils';
 import { ApiRoute, AuthorizationStatus } from '../../const';
 import { checkAuthAction, loginAction, logoutAction } from './user-actions';
-import { AuthData, UserData } from '../../types/userData';
+import { AuthData, UserData } from '../../types/user-data';
 import { redirectToRoute } from '../action';
-import * as userDataStorage from '../../services/userData';
+import * as userDataStorage from '../../services/user-data';
 
 describe('Tests Async actions', () => {
   const axiosInstance = axios.create();
